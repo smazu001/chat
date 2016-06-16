@@ -23,11 +23,15 @@ panbot.atalk({input:'HI'}, function (err,res){
 
 var app = express();
 
+
 // Create bot and add dialogs
 var bot = new builder.BotConnectorBot({ appId: '1409612587434', appSecret: '9f859e683ff149b692c4c3f62e963cac' });
 bot.add('/', function (session, results) {
-    session.send('Hello World2'+ session.message.text);
-
+    panbot.talk({input:session.message.text},function (err, res){
+        if(!err){
+            session.send('Hello World2'+ res);
+        };
+    });
 });
 
 app.post('/api/messages', bot.verifyBotFramework(), bot.listen());
