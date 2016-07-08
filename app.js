@@ -27,7 +27,7 @@ var bot = new builder.BotConnectorBot({ appId: '1409612587434', appSecret: '9f85
 bot.add('/', function (session, results) {
     panbot.talk({input:session.message.text},function (err, res){
         if(!err){
-            session.send('Hello World2'+ res.responses[0]);
+            session.send(''+ res.responses[0]);
         };
     });
 });
